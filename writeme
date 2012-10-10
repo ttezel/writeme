@@ -1,0 +1,246 @@
+#!/usr/bin/env node
+
+var cp = require('child_process')
+  , fs = require('fs')
+  , path = require('path')
+  , util = require('util')
+  , colors = require('colors')
+  , findit = require('findit')
+  , mustache = require('mustache')
+
+//default top-level files/directories to ignore
+var DEFAULT_IGNORE_LIST = [
+  'node_modules'
+, 'test'
+, 'writeme-config.js'
+, 'test.js'
+]
+
+function Writeme (root) {
+  var self = this
+  if (!root) throw new Error('writeme: must specify `root` directory to generate docs for')
+  this.root = root
+
+  var config = path.resolve(root, './writeme-config.js')
+
+  //assign config
+  //use writeme-config if it exists
+  //otherwise assign default config
+  fs.exists(config, function (exists) {
+    if (exists) {
+      console.log('writeme-config.js found. Applying your settings'.green)
+      self.config = require('./writeme-config')
+      //kick it off
+      self.generateDocs()
+      return
+    }
+
+    console.log('warning: no `writeme-config.js` file found. Using default config settings.'.red)
+
+    //assign default config settings    
+    self.buildDefaultConfig(function (err) {
+      if (err) throw err
+
+      //config created - kick it off
+      self.generateDocs()
+    })
+  })
+}
+
+module.exports = Writeme
+
+/*
+Build default config settings for writeme, call @callback on completion
+*/
+Writeme.prototype.buildDefaultConfig = function (cb) {
+  var self = this
+
+  this.config = {
+    include: []
+  }
+
+  //build default hash of paths to ignore - everything else gets documented
+  var ignore = {}
+
+  DEFAULT_IGNORE_LIST.forEach(function (name) {
+    ignore[path.resolve(root, name)] = 1
+  })
+
+  //read root directory to get default `include` paths
+  fs.readdir(self.root, function (err, files) {
+    if (err) {
+      cb(err)
+      return
+    }
+
+    //filter files using default ignore list
+    self.config.include = files.filter(function (file) {
+      var fullPath = path.resolve(root, file)
+
+      //screen ignored names and files/directories prefixed with '.'
+      if (!ignore[fullPath] && file.charAt(0) !== '.')
+        return true
+    })
+
+    cb(null)
+  })
+}
+
+/*
+Get files to generate docs for
+*/
+Writeme.prototype.getFiles = function (cb) {
+  var self = this
+    , include = this.config.include
+    , files = []
+    , done = 0
+
+  //create a finder for each include path
+  //and retrieve all .js files to generate docs for
+  //call @cb when all finders have ended
+  include.forEach(function (target) {
+    var where = path.resolve(self.root, target)
+
+    //check to make sure the `include` exists on the fs
+    //warn user if it doesn't exist on the fs, and don't document it
+    fs.exists(where, function (exists) {
+      if (!exists) {
+        var msg = 'warning: writeme-config has invalid path: '+where
+        console.log(msg.red)
+        return
+      }
+
+      //this `include` path exists. Traverse it
+      var finder = findit.find(where)
+
+      finder.on('file', function (file, stat) {
+        if (path.extname(file) === '.js')
+          files.push(file)
+      })
+      finder.on('end', function () {
+        done += 1
+
+        if (done === include.length)
+          cb(null, files)
+      })
+    })
+  })
+}
+
+/*
+Make directory to put docs in, set self.docPath, and call @cb on completion
+cb - function (err)
+*/
+Writeme.prototype.makeDocDirectory = function (cb) {
+  var self = this
+  //make docs directory to put output in
+  var docPath = path.resolve(this.root, 'docs')
+
+  //check if docPath already exists, create it if doesn't already exist
+  fs.exists(docPath, function (exists) {
+    if (exists) {
+      self.docPath = docPath
+      cb(null)
+      return
+    }
+
+    //docs directory does not exist, so create it
+    fs.mkdir(docPath, function (err) {
+      if (err) {
+        var error = new Error('writeme failed to create doc directory')
+        error.details = err
+        cb(error)
+        return
+      }
+
+      self.docPath = docPath
+
+      cb(null)
+    })
+  })
+}
+
+/*
+Create docs directory to put output in.
+Render docs using dox and markdown & place them in the docs directory.
+*/
+Writeme.prototype.generateDocs = function () {
+  var self = this
+
+  this.makeDocDirectory(function (err) {
+    if (err) throw err
+
+    //get files to generate docs for
+    var files = self.getFiles(function (err, files) {
+      if (err) throw err
+
+      //run dox on each file and call .renderDocs() on each one
+      files.forEach(function (file) {
+        var command = './node_modules/dox/bin/dox < '+file
+
+        var dox = cp.exec(command, function (err, stdout, stderr) {
+          if (err) throw err
+          if (stderr) return console.log('dox stderr:'.red, stderr)
+
+          //success - render the doc using the json from stdout
+          self.renderDoc(file, stdout, function (err, rendered) {
+            if (err) throw err
+            //make doc name for this file
+            var fileBasename = path.basename(file, '.js')
+            var where = path.resolve(self.docPath, fileBasename+'.html')
+
+            fs.writeFile(where, rendered, function (err) {
+              if (err) throw err
+            })
+          })
+        })
+      })
+    })
+  })
+}
+
+/*
+render a doc from dox json output using mustache and templates/default.html.
+Call @cb on completion
+
+@param cb - function (err, renderedTemplate)
+
+@return rendered doc file (html string)
+*/
+Writeme.prototype.renderDoc = function (filename, doxOut, cb) {
+  var templatePath = path.resolve(__dirname, './templates/default.html')
+
+  var rendered = fs.readFile(templatePath, 'utf8', function (err, template) {
+    if (err) {
+      cb(err, null)
+      return
+    }
+
+    try {
+      doxOut = JSON.parse(doxOut)
+    } catch (err) {
+      console.log('dox did not generate valid json for filename %s'.red, filename)
+      return
+    }
+
+    var templateParams = {
+      doxOut: doxOut
+    }
+
+    console.log('templateParams', util.inspect(templateParams, true, null, true))
+
+    //render the template using mustache
+    var rendered = mustache.render(template, templateParams)
+
+    console.log('rendered', rendered)
+
+    cb(null, rendered)
+  })
+}
+
+//when run as binary, run Writeme in process.cwd()
+if (!module.parent) {
+  console.log('\nwriteme starting...'.green)
+
+  var writeme = new Writeme(process.cwd())
+}
