@@ -3,12 +3,13 @@
     "description": "painless documentation generation for javascript",
     "version": "0.0.0",
     "author": "Tolga Tezel",
-    "keywords": ["doc", "documentation"],
+    "keywords": ["doc", "jsdoc", "documentation", "generation", "generator"],
     "dependencies": {
       "colors": "0.6.x",
       "dox": "0.3.x",
       "findit": "0.1.x",
-      "mustache": "0.7.x"
+      "mustache": "0.7.x",
+      "marked": "0.2.x"
     },
     "devDependencies": {
       "mocha": ">=1.4.2"
@@ -20,6 +21,6 @@
         "url": "http://github.com/ttezel/writeme.git"
     },
     "scripts": {
-      "test": "mocha test.js -t 20000"
+      "test": "mocha test/test.js -t 20000"
     }
 }
