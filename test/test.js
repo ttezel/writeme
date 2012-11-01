@@ -10,7 +10,7 @@ describe('writeme', function () {
 			console.log('chdir error with ./test/with-config:', err)
 		}
 
-		var writeme = cp.spawn('../../writeme')
+		var writeme = cp.spawn('../../bin/writeme')
 
 		writeme.stdout.on('data', function (out) {
 			console.log(out.toString())

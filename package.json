@@ -20,7 +20,7 @@
         "url": "http://github.com/ttezel/writeme.git"
     },
     "bin": {
-      "writeme": "./writeme"
+      "writeme": "./bin/writeme"
     },
     "main": "./writeme.js",
     "scripts": {

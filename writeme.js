@@ -10,10 +10,12 @@ var fs = require('fs')
  * @param {String} root absolute path to the directory (or file) to be documented
  */
 function Writeme (root) {
-  var self = this
-  if (!root) throw new Error('writeme: must specify `root` directory to generate docs for')
+  if (!root) 
+    throw new Error('writeme: must specify valid `root` directory to generate docs for')
+
   this.root = root
 
+  var self = this
   //build config then generate docs
   this.buildConfig(function (err) {
     if (err) throw err
@@ -27,12 +29,12 @@ function Writeme (root) {
 /*
 Attach prototype methods from lib directory
  */
-fs
-.readdirSync(path.resolve(__dirname, 'lib'))
-.forEach(function (file) {
-  //add methods to prototype
-  var method = path.basename(file, '.js')
-  Writeme.prototype[method] = require('./lib/'+method)
-})
+  fs
+  .readdirSync(path.resolve(__dirname, 'lib'))
+  .forEach(function (file) {
+    //add methods to prototype
+    var method = path.basename(file, '.js')
+    Writeme.prototype[method] = require('./lib/'+method)
+  })
 
 module.exports = Writeme
