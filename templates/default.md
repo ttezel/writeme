@@ -2,9 +2,14 @@
 ##{{{filename}}}
 
 {{#doxOut}}
+{{^isPrivate}}
+{{#ctx.string}}
 ###{{ctx.string}}
-{{{description.summary}}}
+{{/ctx.string}}
+{{{description.full}}}
 {{#tags}}
-{{type}} `{{name}}` {{#types}}**{{.}}** {{/types}} {{description}}
+{{! if type is return, there will be no name }}
+{{type}} {{#name}}`{{name}}`{{/name}}: {{#types}}**{{.}}** {{/types}} {{description}}<br/>
 {{/tags}}
+{{/isPrivate}}
 {{/doxOut}}
