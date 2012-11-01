@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var Writeme = require('../writeme')
+
+console.log('\nwriteme starting...'.green)
+
+var writeme = new Writeme(process.cwd())
