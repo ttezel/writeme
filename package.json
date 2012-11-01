@@ -15,11 +15,14 @@
       "mocha": ">=1.4.2"
     },
     "engines": { "node": ">=0.8.x" },
-    "main": "./index",
     "repository": {
         "type": "git",
         "url": "http://github.com/ttezel/writeme.git"
     },
+    "bin": {
+      "writeme": "./writeme"
+    },
+    "main": "./writeme.js",
     "scripts": {
       "test": "mocha test/test.js -t 20000"
     }
