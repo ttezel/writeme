@@ -1,5 +1,5 @@
 {
     "include": [],
-    "doc_dir": "./docs",
-    "output": "./readme.md"
+    "doc_dir": ".",
+    "output": "readme"
 }

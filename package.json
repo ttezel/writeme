@@ -1,7 +1,7 @@
 {
     "name": "writeme",
     "description": "painless documentation generation for javascript",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "author": "Tolga Tezel",
     "keywords": ["doc", "jsdoc", "documentation", "generation", "generator"],
     "dependencies": {
@@ -24,6 +24,6 @@
     },
     "main": "./writeme.js",
     "scripts": {
-      "test": "mocha test/test.js -t 20000"
+      "test": "mocha -t 20000"
     }
 }
