@@ -14,6 +14,12 @@ describe('writeme', function () {
 	})
 })
 
+/**
+ * Run Writeme in the directory specified by @relPath. Call @done on completion.
+ * 
+ * @param  {string}   relPath  path relative to process.cwd()
+ * @param  {Function} done     completion callback
+ */
 function runWriteme (relPath, done) {
 	var cwd = process.cwd()
 

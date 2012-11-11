@@ -15,6 +15,8 @@ writeme
 
 By default, `writeme` will create a `readme.md` an a `readme.html` at the root of your directory, containing the generated documentation for the directory that you ran `writeme` in. It relies on your code being commented using [jsdoc](http://en.wikipedia.org/wiki/JSDoc) format. `writeme` grabs your jsdoc-formatted comments, and generates nice-looking documentation for you.
 
+To see examples of what `writeme`-generated documentation looks like, check out `api.md` at the root of this repo, or the examples inside the `examples` directory.
+
 You can overwrite the default writeme options by adding a `writeme-config.json` file at the root of the directory where you run the `writeme` command.
 
 The json inside `writeme-config.json` may specify any of these values:
