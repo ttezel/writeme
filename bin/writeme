@@ -2,6 +2,6 @@
 
 var Writeme = require('../writeme')
 
-console.log('\nwriteme starting...'.green)
+console.log(('\nwriteme starting in '+process.cwd()).green)
 
 var writeme = new Writeme(process.cwd())
