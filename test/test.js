@@ -3,12 +3,7 @@ var cp = require('child_process')
 	, colors = require('colors')
 
 describe('writeme', function () {
-	//run it against `with-config` example directory
-	it('works with writeme-config', function (done) {
-		runWriteme('./examples/with-config', done)
-	})
-
-	//run it against 
+	//run it against ./examples/no-config
 	it('works with no writeme-config', function (done) {
 		runWriteme('./examples/no-config', done)
 	})
