@@ -10,7 +10,7 @@
 
 <h2>Config options</h2>
 
-<p><code>include</code>: array of files to document (all other files will be ignored)<br /><code>template_path</code>: path to mustache template to use for rendering docs<br /><code>css_path</code>: path to css file to use for docs (defaults to gfm)<br /><code>doc_base</code>: path (and basename) of docs output. <br />All docs will be output to two files with the <code>doc_base</code> string as the basename. <br />(eg. a value of <code>./readme</code> will output a readme.md &amp; readme.html)</p>
+<p><code>include</code>: array of files to document (all other files will be ignored)<br /><code>template_path</code>: path to mustache template to use for rendering docs<br /><code>css_path</code>: path to css file to use for docs (defaults to gfm)<br /><code>doc_base</code>: basename of docs output. <br />All docs will be output to two files with the <code>doc_base</code> string as the basename. <br />(eg. a value of <code>readme</code> will output a readme.md &amp; readme.html)</p>
 param `cb`: **Function**  completion callback. Signature: function (err)<br/>
 <br/>
 
@@ -28,16 +28,7 @@ param `cb`: **function**  completion callback. Function (err)<br/>
 
 ##lib/initializeDoc.js
 ###module.exports()
-<p>initialize doc (write css) and cache config.template_path</p>
-param `cb`: **Function**  completion callback. Signature: function (err)<br/>
-<br/>
-
-
-
-
-##lib/makeDocDirectory.js
-###module.exports()
-<p>Create directory to put docs in and set self.docPath.</p>
+<p>initialize doc (write css) &amp; delete markdown file (if exists) <br />and cache config.template_path</p>
 param `cb`: **Function**  completion callback. Signature: function (err)<br/>
 <br/>
 

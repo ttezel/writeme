@@ -195,7 +195,7 @@ table tbody tr:nth-child(2n-1) {
 
 <h2>Config options</h2>
 
-<p><code>include</code>: array of files to document (all other files will be ignored)<br /><code>template_path</code>: path to mustache template to use for rendering docs<br /><code>css_path</code>: path to css file to use for docs (defaults to gfm)<br /><code>doc_base</code>: path (and basename) of docs output. <br />All docs will be output to two files with the <code>doc_base</code> string as the basename. <br />(eg. a value of <code>./readme</code> will output a readme.md &amp; readme.html)</p>
+<p><code>include</code>: array of files to document (all other files will be ignored)<br /><code>template_path</code>: path to mustache template to use for rendering docs<br /><code>css_path</code>: path to css file to use for docs (defaults to gfm)<br /><code>doc_base</code>: basename of docs output. <br />All docs will be output to two files with the <code>doc_base</code> string as the basename. <br />(eg. a value of <code>readme</code> will output a readme.md &amp; readme.html)</p>
 
 <p>param <code>cb</code>: <strong>Function</strong>  completion callback. Signature: function (err)<br/>
 <br/></p>
@@ -213,16 +213,7 @@ table tbody tr:nth-child(2n-1) {
 
 <h3 id="moduleexports">module.exports()</h3>
 
-<p>initialize doc (write css) and cache config.template_path</p>
-
-<p>param <code>cb</code>: <strong>Function</strong>  completion callback. Signature: function (err)<br/>
-<br/></p>
-
-<h2 id="libmakedocdirectoryjs">lib/makeDocDirectory.js</h2>
-
-<h3 id="moduleexports">module.exports()</h3>
-
-<p>Create directory to put docs in and set self.docPath.</p>
+<p>initialize doc (write css) &amp; delete markdown file (if exists) <br />and cache config.template_path</p>
 
 <p>param <code>cb</code>: <strong>Function</strong>  completion callback. Signature: function (err)<br/>
 <br/></p>
