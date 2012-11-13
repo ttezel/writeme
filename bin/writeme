@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var Writeme = require('../writeme')
+var Writeme = require('../lib/writeme')
 
 console.log(('\nwriteme starting in '+process.cwd()).green)
 

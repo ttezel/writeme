@@ -1,5 +1,4 @@
 {
     "include": [],
-    "doc_dir": ".",
-    "output": "readme"
+    "doc_base": "readme"
 }

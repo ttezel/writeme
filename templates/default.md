@@ -1,8 +1,8 @@
 #{{{dirname}}}
-##{{{filename}}}
 
-{{#doxOut}}
-{{^isPrivate}}
+{{#doxArray}}
+##{{{filename}}}
+{{#doxOutput}}
 {{#ctx.string}}
 ###{{ctx.string}}
 {{/ctx.string}}
@@ -10,6 +10,13 @@
 {{#tags}}
 {{! if type is return, there will be no name }}
 {{type}} {{#name}}`{{name}}`{{/name}}: {{#types}}**{{.}}** {{/types}} {{description}}<br/>
-{{/tags}}
+{{/tags}}<br/>
+
+
+{{/doxOutput}}
+
+
+{{/doxArray}}
+
+{{^isPrivate}}
 {{/isPrivate}}
-{{/doxOut}}

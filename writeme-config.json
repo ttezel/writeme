@@ -1,3 +1,4 @@
 {
-    "output": "api"
+    "include": ["lib"],
+    "doc_base": "api"
 }
