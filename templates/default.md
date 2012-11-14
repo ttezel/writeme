@@ -2,16 +2,23 @@
 
 {{#doxArray}}
 ##{{{filename}}}
+- - - - -
 {{#doxOutput}}
+{{#signature}}
+###function {{signature}}
+{{/signature}}
+{{^signature}}
+{{! if no signature present, just use the string representation }}
 {{#ctx.string}}
 ###{{ctx.string}}
 {{/ctx.string}}
-{{{description.full}}}
+{{/signature}}
 {{#tags}}
 {{! if type is return, there will be no name }}
-{{type}} {{#name}}`{{name}}`{{/name}}: {{#types}}**{{.}}** {{/types}} {{description}}<br/>
-{{/tags}}<br/>
-
+{{type}} {{#name}}`{{name}}`{{/name}}: {{#types}}**{{.}}** {{/types}}  {{description}}
+{{/tags}}
+###Description
+{{{description.full}}}
 
 {{/doxOutput}}
 

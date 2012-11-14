@@ -185,9 +185,15 @@ table tbody tr:nth-child(2n-1) {
 
 <h2 id="libbuildconfigjs">lib/buildConfig.js</h2>
 
-<h3 id="moduleexports">module.exports()</h3>
+<hr />
 
-<p>Build self.config, call @callback on completion.</p>
+<h3 id="functionmoduleexportscb">function module.exports(cb)</h3>
+
+<p>param <code>cb</code>: <strong>Function</strong>   completion callback. Signature: function (err)</p>
+
+<h3 id="description">Description</h3>
+
+<p>Build self.config, call <code>cb</code> on completion.</p>
 
 <p>Default config <code>include</code> array includes all .js files found in root, excluding the<br />default ignore list and files/directories prefixed with '.'</p>
 
@@ -197,49 +203,58 @@ table tbody tr:nth-child(2n-1) {
 
 <p><code>include</code>: array of files to document (all other files will be ignored)<br /><code>template_path</code>: path to mustache template to use for rendering docs<br /><code>css_path</code>: path to css file to use for docs (defaults to gfm)<br /><code>doc_base</code>: basename of docs output. <br />All docs will be output to two files with the <code>doc_base</code> string as the basename. <br />(eg. a value of <code>readme</code> will output a readme.md &amp; readme.html)</p>
 
-<p>param <code>cb</code>: <strong>Function</strong>  completion callback. Signature: function (err)<br/>
-<br/></p>
-
 <h2 id="libgeneratedocsjs">lib/generateDocs.js</h2>
 
-<h3 id="moduleexports">module.exports()</h3>
+<hr />
+
+<h3 id="functionmoduleexportscb">function module.exports(cb)</h3>
+
+<p>param <code>cb</code>: <strong>function</strong>   completion callback. Function (err)</p>
+
+<h3 id="description">Description</h3>
 
 <p>Traverse down the root and run .renderDoc() as files are discovered.</p>
 
-<p>param <code>cb</code>: <strong>function</strong>  completion callback. Function (err)<br/>
-<br/></p>
-
 <h2 id="libinitializedocjs">lib/initializeDoc.js</h2>
 
-<h3 id="moduleexports">module.exports()</h3>
+<hr />
 
-<p>initialize doc (write css) &amp; delete markdown file (if exists) <br />and cache config.template_path</p>
+<h3 id="functionmoduleexportscb">function module.exports(cb)</h3>
 
-<p>param <code>cb</code>: <strong>Function</strong>  completion callback. Signature: function (err)<br/>
-<br/></p>
+<p>param <code>cb</code>: <strong>Function</strong>   completion callback. Signature: function (err)</p>
+
+<h3 id="description">Description</h3>
+
+<p>initialize html doc (write css) &amp; delete markdown file (if exists)</p>
 
 <h2 id="librenderdocsjs">lib/renderDocs.js</h2>
 
-<h3 id="moduleexports">module.exports()</h3>
+<hr />
+
+<h3 id="functionmoduleexportsfiles">function module.exports(files)</h3>
+
+<p>param <code>files</code>: <strong>array</strong>   array of absolute paths of files to document</p>
+
+<h3 id="description">Description</h3>
 
 <p>Run <code>dox</code> on @file, render markdown &amp; html, then write to doc files</p>
 
-<p>param <code>files</code>: <strong>array</strong>  array of absolute paths of files to document<br/>
-<br/></p>
-
 <h2 id="libwritemejs">lib/writeme.js</h2>
 
-<h3 id="writeme">Writeme()</h3>
+<hr />
+
+<h3 id="functionwritemeroot">function Writeme(root)</h3>
+
+<p>param <code>root</code>: <strong>String</strong>   absolute path to the directory (or file) to be documented</p>
+
+<h3 id="description">Description</h3>
 
 <p>Writeme class</p>
 
 <p>Sets up writeme configuration, and kicks off the doc generation</p>
 
-<p>param <code>root</code>: <strong>String</strong>  absolute path to the directory (or file) to be documented<br/>
-<br/></p>
-
 <h3 id="writemeprototype">Writeme.prototype</h3>
 
-<p>Attach prototype methods from lib directory</p>
+<h3 id="description">Description</h3>
 
-<p><br/></p>
+<p>Attach prototype methods from lib directory</p>

@@ -1,31 +1,28 @@
 #no-config
 
 ##class.js
+- - - - -
+###Description
 <p>Testing code for writeme</p>
-<br/>
 
-
-###Class()
+###function Class(foo,bar)
+param `foo`: **string**   foo description
+param `bar`: **string**   bar description
+###Description
 <p>Class description</p>
-param `foo`: **string**  foo description<br/>
-param `bar`: **string**  bar description<br/>
-<br/>
 
-
-###Class.prototype.publicMethod()
+###function undefined.publicMethod(baz,)
+param `baz`: **string**   baz description
+return : **boolean**   bool description
+###Description
 <p>publicMethod description</p>
-param `baz`: **string**  baz description<br/>
-return : **boolean**  bool description<br/>
-<br/>
 
-
-###Class.prototype.publicMethod()
+###function undefined.publicMethod(baz,,)
+param `baz`: **string**   baz description
+return : **boolean**   bool description
+api :   [object Object]
+###Description
 <p>privateMethod description</p>
-param `baz`: **string**  baz description<br/>
-return : **boolean**  bool description<br/>
-api :  [object Object]<br/>
-<br/>
-
 
 
 
