@@ -28,7 +28,7 @@ Class.prototype.publicMethod = function (baz) {
  * @return {boolean}        bool description
  * @api private
  */
-Class.prototype.publicMethod = function (baz) {
+Class.prototype.privateMethod = function (baz) {
     return true
 }
 

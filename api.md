@@ -4,6 +4,7 @@
 
 ###function module.exports(cb)
 param `cb`: **Function**   completion callback. Signature: function (err)
+
 ###Description
 <p>Build self.config, call <code>cb</code> on completion.</p>
 
@@ -21,6 +22,7 @@ param `cb`: **Function**   completion callback. Signature: function (err)
 
 ###function module.exports(cb)
 param `cb`: **function**   completion callback. Function (err)
+
 ###Description
 <p>Traverse down the root and run .renderDoc() as files are discovered.</p>
 
@@ -30,6 +32,7 @@ param `cb`: **function**   completion callback. Function (err)
 
 ###function module.exports(cb)
 param `cb`: **Function**   completion callback. Signature: function (err)
+
 ###Description
 <p>initialize html doc (write css) &amp; delete markdown file (if exists)</p>
 
@@ -39,6 +42,7 @@ param `cb`: **Function**   completion callback. Signature: function (err)
 
 ###function module.exports(files)
 param `files`: **array**   array of absolute paths of files to document
+
 ###Description
 <p>Run <code>dox</code> on @file, render markdown &amp; html, then write to doc files</p>
 
@@ -48,6 +52,7 @@ param `files`: **array**   array of absolute paths of files to document
 
 ###function Writeme(root)
 param `root`: **String**   absolute path to the directory (or file) to be documented
+
 ###Description
 <p>Writeme class</p>
 
