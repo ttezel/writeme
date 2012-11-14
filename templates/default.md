@@ -1,8 +1,8 @@
 #{{{dirname}}}
 
 {{#doxArray}}
-##{{{filename}}}
-- - - - -
+##File: {{{filename}}}
+
 {{#doxOutput}}
 {{#signature}}
 ###function {{signature}}

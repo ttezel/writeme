@@ -1,7 +1,7 @@
 #writeme
 
-##lib/buildConfig.js
-- - - - -
+##File: lib/buildConfig.js
+
 ###function module.exports(cb)
 param `cb`: **Function**   completion callback. Signature: function (err)
 ###Description
@@ -17,8 +17,8 @@ param `cb`: **Function**   completion callback. Signature: function (err)
 
 
 
-##lib/generateDocs.js
-- - - - -
+##File: lib/generateDocs.js
+
 ###function module.exports(cb)
 param `cb`: **function**   completion callback. Function (err)
 ###Description
@@ -26,8 +26,8 @@ param `cb`: **function**   completion callback. Function (err)
 
 
 
-##lib/initializeDoc.js
-- - - - -
+##File: lib/initializeDoc.js
+
 ###function module.exports(cb)
 param `cb`: **Function**   completion callback. Signature: function (err)
 ###Description
@@ -35,8 +35,8 @@ param `cb`: **Function**   completion callback. Signature: function (err)
 
 
 
-##lib/renderDocs.js
-- - - - -
+##File: lib/renderDocs.js
+
 ###function module.exports(files)
 param `files`: **array**   array of absolute paths of files to document
 ###Description
@@ -44,8 +44,8 @@ param `files`: **array**   array of absolute paths of files to document
 
 
 
-##lib/writeme.js
-- - - - -
+##File: lib/writeme.js
+
 ###function Writeme(root)
 param `root`: **String**   absolute path to the directory (or file) to be documented
 ###Description

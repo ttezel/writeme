@@ -1,7 +1,7 @@
 #no-config
 
-##class.js
-- - - - -
+##File: class.js
+
 ###Description
 <p>Testing code for writeme</p>
 
