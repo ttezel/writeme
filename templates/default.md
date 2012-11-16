@@ -20,7 +20,7 @@
 {{type}} {{#name}}`{{name}}`{{/name}}: {{#types}}**{{.}}** {{/types}}  {{description}}
 
 {{/tags}}
-###Description
+
 {{{description.full}}}
 {{/isPrivate}}
 

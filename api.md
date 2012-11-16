@@ -3,9 +3,9 @@
 ##File: lib/buildConfig.js
 
 ###function module.exports(cb)
-param `cb`: **Function**   completion callback. Signature: function (err)
+ `cb`: **Function**   completion callback. Signature: function (err)
 
-###Description
+
 <p>Build self.config, call <code>cb</code> on completion.</p>
 
 <p>Default config <code>include</code> array includes all .js files found in root, excluding the<br />default ignore list and files/directories prefixed with '.'</p>
@@ -21,9 +21,9 @@ param `cb`: **Function**   completion callback. Signature: function (err)
 ##File: lib/generateDocs.js
 
 ###function module.exports(cb)
-param `cb`: **function**   completion callback. Function (err)
+ `cb`: **function**   completion callback. Signature: function (err)
 
-###Description
+
 <p>Traverse down the root and run .renderDoc() as files are discovered.</p>
 
 
@@ -31,9 +31,9 @@ param `cb`: **function**   completion callback. Function (err)
 ##File: lib/initializeDoc.js
 
 ###function module.exports(cb)
-param `cb`: **Function**   completion callback. Signature: function (err)
+ `cb`: **Function**   completion callback. Signature: function (err)
 
-###Description
+
 <p>initialize html doc (write css) &amp; delete markdown file (if exists)</p>
 
 
@@ -41,25 +41,25 @@ param `cb`: **Function**   completion callback. Signature: function (err)
 ##File: lib/renderDocs.js
 
 ###function module.exports(files)
-param `files`: **array**   array of absolute paths of files to document
+ `files`: **array**   array of absolute paths of files to document
 
-###Description
-<p>Run <code>dox</code> on @file, render markdown &amp; html, then write to doc files</p>
+
+<p>Run dox on <code>files</code>, render markdown &amp; html, then write to doc files</p>
 
 
 
 ##File: lib/writeme.js
 
 ###function Writeme(root)
-param `root`: **String**   absolute path to the directory (or file) to be documented
+ `root`: **String**   absolute path to the directory (or file) to be documented
 
-###Description
+
 <p>Writeme class</p>
 
 <p>Sets up writeme configuration, and kicks off the doc generation</p>
 
 ###Writeme.prototype
-###Description
+
 <p>Attach prototype methods from lib directory</p>
 
 
