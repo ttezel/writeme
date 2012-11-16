@@ -1,7 +1,7 @@
 {
     "name": "writeme",
     "description": "painless documentation generation for javascript",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": "Tolga Tezel",
     "keywords": ["doc", "jsdoc", "documentation", "generation", "generator"],
     "dependencies": {
