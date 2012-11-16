@@ -9,7 +9,8 @@
       "dox": "0.3.x",
       "findit": "0.1.x",
       "mustache": "0.7.x",
-      "marked": "0.2.x"
+      "marked": "0.2.x",
+      "seq": "0.3.5"
     },
     "devDependencies": {
       "mocha": ">=1.4.2"
