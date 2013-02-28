@@ -17,11 +17,11 @@ writeme
 
 ###Example
 
-Given the following code:
+Code should be documented similar to the example below:
 
 ```javascript
 /**
- * Here I describe what my function does.
+ * Here I describe what this function does.
  * 
  * @param  {string} baz     baz description
  * @return {boolean}        bool description
@@ -31,20 +31,9 @@ Class.prototype.publicMethod = function (baz) {
 }
 ```
 
-`Writeme` generates:
-
-
-###function Class.publicMethod(baz)
- `baz`: **string**   baz description
-
-return : **boolean**   bool description
-
-
-<p>Here I describe what my function does.</p>
-
 -----
 
-To see further examples of what `writeme`-generated documentation looks like, check out `api.md` and `api.html` at the root of this repo, or the examples inside the `examples` directory.
+To see examples of what `writeme`-generated documentation looks like, check out [api.md](https://github.com/ttezel/writeme/blob/master/api.md) and [api.html](https://github.com/ttezel/writeme/blob/master/api.html) at the root of this repo, or the examples inside the **examples** directory.
 
 
 ## License 
